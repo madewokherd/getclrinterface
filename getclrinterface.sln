@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "getclrinterface", "getclrinterface\getclrinterface.csproj", "{7FECC90E-BC28-4D37-B199-A6081F5F7D8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FECC90E-BC28-4D37-B199-A6081F5F7D8E}.Debug|x86.ActiveCfg = Debug|x86
+		{7FECC90E-BC28-4D37-B199-A6081F5F7D8E}.Debug|x86.Build.0 = Debug|x86
+		{7FECC90E-BC28-4D37-B199-A6081F5F7D8E}.Release|x86.ActiveCfg = Release|x86
+		{7FECC90E-BC28-4D37-B199-A6081F5F7D8E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = getclrinterface\getclrinterface.csproj
+	EndGlobalSection
+EndGlobal
