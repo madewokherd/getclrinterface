@@ -22,12 +22,30 @@ namespace getclrinterface
 				kvp.Value.PrintInterface();
 			}
 		}
-	
+		
+		internal static AssemblyNameReference AssemblyNameReferenceFromToken (ModuleDefinition module, MetadataToken token)
+		{
+			foreach (AssemblyNameReference asmref in module.AssemblyReferences)
+			{
+				if (asmref.MetadataToken == token)
+					return asmref;
+			}
+			return null;
+		}
+		
 		public void ReadModuleImports (ModuleDefinition module)
 		{
 			foreach (AssemblyNameReference reference in module.AssemblyReferences)
 			{
 				AddAssemblyReference(reference);
+			}
+			foreach (TypeReference typeref in module.GetTypeReferences())
+			{
+				IMetadataScope scope = typeref.Scope;
+				if (scope.MetadataScopeType != MetadataScopeType.AssemblyNameReference)
+					continue;
+				AssemblyNameReference reference = AssemblyNameReferenceFromToken(module, typeref.Scope.MetadataToken);
+				this[reference].AddTypeReference(typeref);
 			}
 		}
 		
