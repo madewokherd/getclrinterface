@@ -42,7 +42,9 @@ namespace getclrinterface
 
 			if (!exports)
 				info.ReadAssemblyImports(assembly);
-
+			else
+				info.ReadAssemblyExports(assembly);
+			
 			PrintInterface(info);
 		}
 	}

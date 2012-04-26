@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "getclrinterface", "getclrinterface\getclrinterface.csproj", "{7FECC90E-BC28-4D37-B199-A6081F5F7D8E}"
 EndProject
 Global

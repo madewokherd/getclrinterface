@@ -29,6 +29,11 @@ namespace getclrinterface
 				ReadModuleImports(module);
 			}
 		}
+		
+		public void ReadAssemblyExports (AssemblyDefinition assembly)
+		{
+			AddAssemblyReference(assembly.Name);
+		}
 	}
 }
 
