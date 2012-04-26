@@ -7,14 +7,6 @@ namespace getclrinterface
 {
 	class MainClass
 	{
-		public static void PrintInterface (InterfaceInfo info)
-		{
-			foreach (KeyValuePair<AssemblyNameReference, ModuleInterfaceInfo> kvp in info)
-			{
-				System.Console.WriteLine(kvp.Key.ToString());
-			}
-		}
-		
 		public static void Main (string[] args)
 		{
 			bool exports;
@@ -45,7 +37,7 @@ namespace getclrinterface
 			else
 				info.ReadAssemblyExports(assembly);
 			
-			PrintInterface(info);
+			info.PrintInterface();
 		}
 	}
 }

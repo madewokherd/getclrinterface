@@ -41,7 +41,9 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="InterfaceInfo.cs" />
     <Compile Include="AssemblyNameReferenceComparer.cs" />
-    <Compile Include="ModuleInterfaceInfo.cs" />
+    <Compile Include="AssemblyInterfaceInfo.cs" />
+    <Compile Include="TypeInterfaceInfo.cs" />
+    <Compile Include="TypeReferenceComparer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
