@@ -21,6 +21,12 @@ namespace getclrinterface
 				Console.Write("    ");
 				Console.Write(kvp.Key.FullName);
 				Console.WriteLine();
+				foreach (KeyValuePair<MemberReference, MemberReference> mvp in kvp.Value)
+				{
+					Console.Write("        ");
+					Console.Write(mvp.Value.ToString());
+					Console.WriteLine();
+				}
 			}
 		}
 		

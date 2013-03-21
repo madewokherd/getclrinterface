@@ -39,13 +39,21 @@ namespace getclrinterface
 			{
 				AddAssemblyReference(reference);
 			}
-			foreach (TypeReference typeref in module.GetTypeReferences())
+			foreach (MemberReference member in module.GetMemberReferences())
 			{
+				TypeReference typeref = member.DeclaringType;
 				IMetadataScope scope = typeref.Scope;
 				if (scope.MetadataScopeType != MetadataScopeType.AssemblyNameReference)
 					continue;
 				AssemblyNameReference reference = AssemblyNameReferenceFromToken(module, typeref.Scope.MetadataToken);
-				this[reference].AddTypeReference(typeref);
+				if (!this[reference].ContainsKey (typeref))
+					this[reference].AddTypeReference(typeref);
+				if (!(member is TypeReference))
+				{
+					var memberrefs = this[reference][typeref];
+					if (!memberrefs.ContainsKey(member))
+						memberrefs.Add (member, member);
+				}
 			}
 		}
 		

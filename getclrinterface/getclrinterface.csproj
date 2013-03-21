@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="Mono.Cecil, Version=0.9.4.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
       <Package>monodevelop</Package>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +45,7 @@
     <Compile Include="AssemblyInterfaceInfo.cs" />
     <Compile Include="TypeInterfaceInfo.cs" />
     <Compile Include="TypeReferenceComparer.cs" />
+    <Compile Include="MemberReferenceComparer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
