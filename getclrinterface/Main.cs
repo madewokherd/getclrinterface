@@ -9,33 +9,56 @@ namespace getclrinterface
 	{
 		public static void Main (string[] args)
 		{
-			bool exports;
-			string filename;
+			bool exports = true;
 			AssemblyDefinition assembly;
 			InterfaceInfo info = new InterfaceInfo();
+			int arg;
 
 			if (args[0] == "-i")
 			{
 				exports = false;
-				filename = args[1];
+				arg = 1;
 			}
 			else if (args[0] == "-e")
 			{
 				exports = true;
-				filename = args[1];
+				arg = 1;
 			}
 			else
 			{
 				exports = true;
-				filename = args[0];
+				arg = 0;
 			}
 
-			assembly = AssemblyDefinition.ReadAssembly(filename);
+			while (arg < args.Length)
+			{
+				if (args[arg] == "-i")
+				{
+					exports = false;
+					continue;
+				}
+				else if (args[arg] == "-e")
+				{
+					exports = true;
+					continue;
+				}
 
-			if (!exports)
-				info.ReadAssemblyImports(assembly);
-			else
-				info.ReadAssemblyExports(assembly);
+				try
+				{
+					assembly = AssemblyDefinition.ReadAssembly(args[arg]);
+
+					if (!exports)
+						info.ReadAssemblyImports(assembly);
+					else
+						info.ReadAssemblyExports(assembly);
+				}
+				catch (System.BadImageFormatException)
+				{
+					Console.WriteLine ("{0}: not a CLR image.", args[arg]);
+				}
+
+				arg++;
+			}
 			
 			info.PrintInterface();
 		}

@@ -27,7 +27,7 @@ namespace getclrinterface
 				if (mrx.GenericParameters.Count != mry.GenericParameters.Count)
 					return false;
 
-				if (mrx.Parameters != mry.Parameters)
+				if (mrx.Parameters.Count != mry.Parameters.Count)
 					return false;
 
 				// FIXME: Do something less lame

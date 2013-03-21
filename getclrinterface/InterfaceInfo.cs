@@ -11,7 +11,8 @@ namespace getclrinterface
 		
 		public void AddAssemblyReference(AssemblyNameReference reference)
 		{
-			Add(reference, new AssemblyInterfaceInfo());
+			if (!ContainsKey(reference))
+				Add(reference, new AssemblyInterfaceInfo());
 		}
 		
 		public void PrintInterface ()
