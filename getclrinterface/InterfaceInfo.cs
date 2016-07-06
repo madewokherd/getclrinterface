@@ -43,6 +43,8 @@ namespace getclrinterface
 			foreach (MemberReference member in module.GetMemberReferences())
 			{
 				TypeReference typeref = member.DeclaringType;
+				if (typeref.IsGenericInstance)
+					typeref = typeref.GetElementType();
 				IMetadataScope scope = typeref.Scope;
 				if (scope.MetadataScopeType != MetadataScopeType.AssemblyNameReference)
 					continue;
