@@ -6,8 +6,11 @@ namespace getclrinterface
 {
 	public class MemberReferenceComparer : IEqualityComparer<MemberReference>
 	{
+		private IEqualityComparer<TypeReference> typerefcmp;
+
 		public MemberReferenceComparer ()
 		{
+			typerefcmp = new TypeReferenceComparer();
 		}
 
 		#region IEqualityComparer implementation
@@ -30,8 +33,17 @@ namespace getclrinterface
 				if (mrx.Parameters.Count != mry.Parameters.Count)
 					return false;
 
-				// FIXME: Do something less lame
-				return mrx.ToString () == mry.ToString ();
+				if (!typerefcmp.Equals(mrx.ReturnType, mry.ReturnType))
+					return false;
+
+				var arx = mrx.Parameters.ToArray();
+				var ary = mry.Parameters.ToArray();
+				for (int i = 0; i<mrx.Parameters.Count; i++)
+				{
+					if (!typerefcmp.Equals(arx[i].ParameterType, ary[i].ParameterType))
+						return false;
+				}
+				return true;
 			}
 
 			if (x is EventReference && y is EventReference)
