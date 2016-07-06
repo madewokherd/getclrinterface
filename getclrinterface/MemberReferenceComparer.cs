@@ -19,7 +19,7 @@ namespace getclrinterface
 			if (x.Name != y.Name)
 				return false;
 
-			if (x is MemberReference && y is MethodReference)
+			if (x is MethodReference && y is MethodReference)
 			{
 				MethodReference mrx = (MethodReference)x;
 				MethodReference mry = (MethodReference)y;
