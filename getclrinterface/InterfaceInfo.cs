@@ -58,6 +58,16 @@ namespace getclrinterface
 						memberrefs.Add (member, member);
 				}
 			}
+			foreach (ExportedType t in module.ExportedTypes)
+			{
+				if (t.IsForwarder)
+				{
+					AssemblyNameReference reference = AssemblyNameReferenceFromToken(module, t.Scope.MetadataToken);
+					var typeref = new TypeReference(t.Namespace, t.Name, module, t.Scope);
+					if (!this[reference].ContainsKey (typeref))
+						this[reference].AddTypeReference(typeref);
+				}
+			}
 		}
 		
 		public void ReadAssemblyImports (AssemblyDefinition assembly)
